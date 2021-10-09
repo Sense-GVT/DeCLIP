@@ -6,5 +6,5 @@ Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-t
 
 ## Model
 
-Declip_r50 [Declip_r50](https://www.runoob.com)
-Declip_vitb32 [Declip_vitb32](https://www.runoob.com)
+Declip_r50    [GoogleDriver](https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing).  
+Declip_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing)
