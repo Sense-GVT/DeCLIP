@@ -7,7 +7,7 @@ Our paper is available in [arxiv](https://arxiv.org/abs/2110.05208)
 
 ## Updates
 
-**Code will be relased soon**
+** Our code, dataset and models will be relased soon**
 
 
 
@@ -22,7 +22,7 @@ Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet 
 
 <!-- **Model will be relased soon** -->
 
-<!-- ### Our pretrain visual backbone model -->
+### Our pretrain visual backbone model (w/o text encoder)
 
 DeCLIP_r50    [GoogleDriver](https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing).  
 DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing)
