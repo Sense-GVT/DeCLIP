@@ -1,7 +1,7 @@
 # DeCLIP
 Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm.
 
-Our paper is available in [arxiv](https://arxiv.org/abs/2110.05208)
+Our paper is available on [arxiv](https://arxiv.org/abs/2110.05208)
 
 
 
