@@ -1,0 +1,136 @@
+#protobuf:                                                                                        #
+model:
+    type: clip_vitb32
+    kwargs:
+        image_encode:
+            embed_dim: 512
+        text_encode:
+            bpe_path: '../../../../text_info/bpe_simple_vocab_16e6.txt.gz'
+            text_encode_type: Transformer #Transformer,Bert,GPT2
+            text_model_utils:
+                random: False
+                freeze: False
+            embed_dim: 512
+        clip:
+            use_allgather: True
+
+dist:
+    sync: False
+
+grad_clip:
+    type: logit_scale_param_value
+    value: 3
+    max_value: 6
+
+
+optimizer:
+    type: AdamW
+    kwargs:
+        lr: 0.0001  # 5e-4
+        weight_decay: 0.1
+        betas: [0.9, 0.98]
+        amsgrad: False
+        eps: 0.00000001
+    #fp16_normal_bn: True
+
+    pconfig:
+        bn_w:
+            weight_decay: 0
+        bn_b:
+            weight_decay: 0
+        ln_w:
+            weight_decay: 0
+        ln_b:
+            weight_decay: 0
+        bias:
+            weight_decay: 0
+        logit_scale:
+            # lr: 0.0001  # not useful
+            weight_decay: 0
+
+
+lr_scheduler:
+    type: Cosine
+    kwargs:
+        base_lr: 0.0001
+        warmup_lr: 0.001
+        min_lr: 0.0
+        warmup_steps: 2500
+        max_iter: 128001
+
+
+
+label_smooth: 0.0
+ema:
+    enable: False
+    kwargs:
+        decay: 0.999
+data:
+    type: clip
+    read_from: petrel_bigmodel_mc
+    use_dali: True
+    batch_size: 128
+    num_workers: 5
+    pin_memory: True
+    input_size: 224
+    test_resize: 256
+
+    train:
+        root_dir: [
+                   'cluster2:s3://yfcc100m-part/data/',
+                   ]
+        meta_file: [
+                  '../../../../imagenet_info/yfcc15m_clean_open_data.json',
+                    ]
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed_iteration
+        transforms:
+            # type: STANDARD_CLIP
+            type: STANDARD_SLIP
+        # image_text_two_view: True
+        fseek: True
+        use_ranked: False
+
+    test:
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 128
+        num_workers: 4
+        pin_memory: False
+        input_size: 224
+        test_resize: 256
+        test:
+            root_dir: '/mnt/lustre/share/images/val/'
+            meta_file: '../../../../imagenet_info/val_official.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+
+saver:
+    print_freq: 100
+    val_freq: 2000
+    save_freq: 500
+    save_many: False
+    pretrain:
+        auto_resume: True
+        # path: checkpoints/ckpt.pth.tar
+        #ignore:
+        #    key:
+        #        - optimizer
+        #        - last_iter
+    #         model:
+    #             - module.fc.weight
+    #             - module.fc.bias

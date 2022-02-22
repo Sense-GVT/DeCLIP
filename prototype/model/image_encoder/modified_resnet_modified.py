@@ -5,6 +5,10 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
+import linklink as link
+from linklink.nn import SyncBatchNorm2d
+from linklink.nn import syncbnVarMode_t
+
 BN = None
 
 class Bottleneck(nn.Module):
@@ -91,6 +95,15 @@ class AttentionPool2d(nn.Module):
 
         return x[0]
 
+def simple_group_split(world_size, rank, num_groups):
+    groups = []
+    rank_list = np.split(np.arange(world_size), num_groups)
+    rank_list = [list(map(int, x)) for x in rank_list]
+    for i in range(num_groups):
+        groups.append(link.new_group(rank_list[i]))
+    group_size = world_size // num_groups
+    return groups[rank // group_size]
+
 class ModifiedResNet(nn.Module):
     """
     A ResNet class that is similar to torchvision's but contains the following changes:
@@ -99,10 +112,31 @@ class ModifiedResNet(nn.Module):
     - The final pooling layer is a QKV attention instead of an average pool
     """
 
-    def __init__(self, layers, embed_dim, heads, input_resolution=224, width=64):
+    def __init__(self, layers, embed_dim, heads, input_resolution=224, width=64,
+                 bn_group_size=1,
+                 bn_var_mode=syncbnVarMode_t.L2,
+                 bn_sync_stats=False,
+                 use_sync_bn=True,
+                 fc_embed=False):
 
-        global BN    
-        BN = nn.BatchNorm2d
+        global BN
+
+        rank = link.get_rank()
+        world_size = link.get_world_size()
+        bn_group = simple_group_split(world_size, rank, world_size // bn_group_size)
+
+        def BNFunc(*args, **kwargs):
+            return SyncBatchNorm2d(*args, **kwargs,
+                                   group=bn_group,
+                                   sync_stats=bn_sync_stats,
+                                   var_mode=bn_var_mode)
+
+
+        if use_sync_bn:
+            BN = BNFunc
+            print('[Rank {}] use SyncBatchNorm in bn_group {}'.format(rank, bn_group), flush=True)
+        else:
+            BN = nn.BatchNorm2d
 
         super().__init__()
         output_dim = embed_dim
@@ -127,8 +161,10 @@ class ModifiedResNet(nn.Module):
         self.layer4 = self._make_layer(width * 8, layers[3], stride=2)
 
         embed_dim = width * 32  # the ResNet feature dimension
-        self.attnpool = AttentionPool2d(input_resolution // 32, embed_dim, heads, output_dim)
+        self.attnpool = AttentionPool2d(input_resolution // 32, embed_dim, heads)
+        self.adaptivepool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(2048, output_dim)
+
         std = self.attnpool.c_proj.in_features ** -0.5
         nn.init.normal_(self.attnpool.q_proj.weight, std=std)
         nn.init.normal_(self.attnpool.k_proj.weight, std=std)
@@ -150,7 +186,7 @@ class ModifiedResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def forward(self, x, return_dense=False, return_feature=False):
         def stem(x):
             for conv, bn in [(self.conv1, self.bn1), (self.conv2, self.bn2), (self.conv3, self.bn3)]:
                 x = self.relu(bn(conv(x)))
@@ -163,15 +199,28 @@ class ModifiedResNet(nn.Module):
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-        x = self.attnpool(x)
-
-        return x
+        dense = x.reshape(x.shape[0], x.shape[1], -1).permute(0, 2, 1)
+        if x.size(3) == 7:
+            x = self.attnpool(x)
+            feature = x
+            x = self.fc(x)
+        else:
+            x = self.adaptivepool(x).squeeze()
+            feature = x
+            x = self.fc(x)
+        ret = [x]
+        if return_dense:
+            ret.append(dense)
+        if return_feature:
+            ret.append(feature)
+        if len(ret) == 1:
+            return ret[0]
+        return tuple(ret)
 
 def modified_resnet_R50(**kwargs):
     vision_width = 64
     vision_heads = vision_width * 32 // 64
     default_kwargs = {
-        'embed_dim': 1024,
         # 'output_dim': 1024, from config
         'layers':(3, 4, 6, 3),
         'heads': vision_heads,
@@ -182,5 +231,17 @@ def modified_resnet_R50(**kwargs):
     model = ModifiedResNet(**default_kwargs)
     return model
 
-
+def modified_resnet_R101(**kwargs):
+    vision_width = 64
+    vision_heads = vision_width * 32 // 64
+    default_kwargs = {
+        # 'output_dim': 1024, from config
+        'layers':(3, 4, 23, 3),
+        'heads': vision_heads,
+        'input_resolution': 224,
+        'width': vision_width
+    }
+    default_kwargs.update(**kwargs)
+    model = ModifiedResNet(**default_kwargs)
+    return model
 
