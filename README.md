@@ -26,6 +26,8 @@ Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet 
 
 # Updates
 
+***2022-03-10*** We update the result of CLIP-Benchmark and release our YFCC15M
+
 ***2022-02-22*** We release our training code, benchmark, and model zoo! ***We will release the checkpoints of each models after align the results soon***. We hope this project could serve the growing Contrastive Language-Image Pretraining research community by providing a flexible as well as standardized toolkit.
 
 ***2021-11-06*** First Commit, Our code, dataset and models will be relased soon.
@@ -39,7 +41,7 @@ Please refer to [get_started.md](docs/get_started.md#installation) for installat
 ## Get Started
 
 
-## Benchmark and model zoo
+## CLIP-Benchmark
 
 <!-- **Model will be relased soon** -->
 
@@ -134,7 +136,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">YFCC-15M</td>
 <td align="center">ResNet50</td>
 <td align="center">32</td>
-<td align="center">--</td>
+<td align="center">37.2</td>
 <td align="center"><a href="experiments/clip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2103.00020.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
@@ -144,7 +146,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">YFCC-15M</td>
 <td align="center">ResNet50</td>
 <td align="center">32</td>
-<td align="center">--</td>
+<td align="center">44.4</td>
 <td align="center"><a href="experiments/declip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
@@ -154,7 +156,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">YFCC-15M</td>
 <td align="center">ResNet50</td>
 <td align="center">32</td>
-<td align="center">--</td>
+<td align="center">28.5</td>
 <td align="center"><a href="experiments/slip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2112.12750.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
@@ -164,7 +166,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">YFCC-15M</td>
 <td align="center">ResNet50</td>
 <td align="center">32</td>
-<td align="center">--</td>
+<td align="center">21.3</td>
 <td align="center"><a href="experiments/filip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2111.07783.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
