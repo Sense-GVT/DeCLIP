@@ -13,6 +13,8 @@ DeCLIP is an open-source project that welcomes any contribution and feedback. We
 + Various benchmark datasets for Large-scale Contrastive Language-Image Pretraining task.
 + Zero-shot transfer and linear classification evaluation scripts for downstream datasets.
 
+We aims to democratize large-scale CLIP to build a fair and reproducible CLIP community.
+
 ## Introduction
 
 Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet al., 2021) has attracted unprecedented attention for its impressive zero-shot recognition ability and excellent transferability to downstream tasks. However, CLIP is quite data-hungry and requires 400M image-text pairs for pre-training, thereby restricting its adoption. This work proposes a novel training paradigm, Data efficient CLIP (DeCLIP), to alleviate this limitation. We demonstrate that by carefully utilizing the widespread supervision among the image-text pairs, our DeCLIP can learn generic visual features more efficiently. Instead of using the single image-text contrastive supervision, we fully exploit data potential through the use of (1) self-supervision within each modality; (2) multi-view supervision across modalities; (3) nearest-neighbor supervision from other similar pairs. Benefiting from these intrinsic supervision, our DeCLIP-ResNet50 can achieve 60.4% zero-shot top1 accuracy on ImageNet, which is 0.8% above the CLIP-ResNet50 while using 7.1× fewer data. Our DeCLIP-ResNet50 outperforms its counterpart in 8 out of 11 visual datasets when transferred to downstream tasks. Moreover, Scaling up the model and computing also works well in our framework.
@@ -42,17 +44,18 @@ Please refer to [get_started.md](docs/get_started.md#installation) for installat
 
 Install PyTorch. The code has been tested with CUDA 11.2/CuDNN 8.1.0, PyTorch 1.8.1.
 
-We train most of our models on 4x8-gpu nodes, 
 
+First, prepare pre-training datasets and downstream classification datasets through [get_started.md](docs/get_started.md#installation). 
 
-### Pre-training
+We organize the different models trained on different data through separate [experimental catalogs] (experiments/), you can check the dir for detail.
 
-First, prepare pre-training datasets  [get_started.md](docs/get_started.md#installation)
+#### 1. Pre-training
 
+You can run `run.sh` directly to train the corresponding model. We train most of our models on 4x8-gpu nodes. Check the config in the experiment directory of the corresponding model for details.
 
+#### 2. Zero-shot Evalution
 
-### Zero-shot Evalution
-First, prepare additional downstream classification datasets  [get_started.md](docs/get_started.md#installation)
+You can add a argument `--evaluate` on run script for zero-shot evalution.
 
 
 
@@ -147,6 +150,9 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 
 
 # CLIP-Benchmark
+
+
+Witnessing its great success, researchers continue to push the frontier of CLIP.  For instance, SLIP, DeCLIP and FILIP achieve considerable improvements via embracing different kinds of supervision within the image-text pairs. However, it remains challenging to make fair comparison between these methods. This is because they do not choose consistent training recipes and even use different data. We propose CLIP-benchmark, a first attempt to evaluate, analyze, and benchmark CLIP and its variants. Moreover, we further combine DeCLIP with FILIP, bringing us the strongest variant DeFILIP.
 
 <!-- **Model will be relased soon** -->
 
