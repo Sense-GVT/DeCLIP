@@ -26,7 +26,7 @@ Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet 
 
 # Updates
 
-***2022-03-10*** We update the result of CLIP-Benchmark and release our YFCC15M
+***2022-03-10*** We update the result of CLIP-Benchmark and release our YFCC15M dataset
 
 ***2022-02-22*** We release our training code, benchmark, and model zoo! ***We will release the checkpoints of each models after align the results soon***. We hope this project could serve the growing Contrastive Language-Image Pretraining research community by providing a flexible as well as standardized toolkit.
 
@@ -39,6 +39,55 @@ Please refer to [get_started.md](docs/get_started.md#installation) for installat
 
 
 ## Get Started
+
+
+## DeCLIP Model-Zoo
+
+### Our pretrain visual backbone model (w/o text encoder)
+<!-- 
+DeCLIP_r50    [GoogleDriver](https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing).  
+DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing) -->
+
+
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="center">Method</th>
+<th valign="center">Dataset</th>
+<th valign="center">Model</th>
+<th valign="center">Epochs</th>
+<th valign="center">0-shot</th>
+<th valign="center">Config</th>
+<th valign="center">Paper</th>
+<th valign="center">Weights</th>
+
+<tr>
+<td align="center">DeCLIP</td>
+<td align="center">Declip-88M</td>
+<td align="center">ResNet50</td>
+<td align="center">32</td>
+<td align="center">62.5</td>
+<td align="center"><a href="">config</a></td>
+<td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing">GoogleDriver</a></td>
+</tr>
+
+ 
+<tr>
+<td align="center">DeCLIP</td>
+<td align="center">Declip-88M</td>
+<td align="center">ViT-B32</td>
+<td align="center">32</td>
+<td align="center">66.2</td>
+<td align="center"><a href="">config</a></td>
+<td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing">GoogleDriver</a></td>
+</tr>
+ 
+ 
+ </tbody></table>
+ 
+
 
 
 ## CLIP-Benchmark
@@ -206,10 +255,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 </tbody></table>
 
 
-<!-- ### Our pretrain visual backbone model (w/o text encoder)
 
-DeCLIP_r50    [GoogleDriver](https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing).  
-DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing) -->
 
 <!-- 
 ### Our pretrain visual backbone 
