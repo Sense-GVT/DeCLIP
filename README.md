@@ -86,7 +86,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">62.5</td>
-<td align="center"><a href="">config</a></td>
+<td align="center"><a href="experiments/declip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -98,7 +98,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">66.2</td>
-<td align="center"><a href="">config</a></td>
+<td align="center"><a href="experiments/declip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -127,7 +127,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">62.5</td>
-<td align="center"><a href="">config</a></td>
+<td align="center"><a href="experiments/declip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1YS6xRdF5bY4rvgyCFQVIyPMr7evfZi3D/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -139,7 +139,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">66.2</td>
-<td align="center"><a href="">config</a></td>
+<td align="center"><a href="experiments/declip_experiments">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/135v0R8zTiAppr-BejtoXRHeGeMTlDf2x/view?usp=sharing">GoogleDriver</a></td>
 </tr>
