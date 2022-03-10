@@ -40,6 +40,22 @@ Please refer to [get_started.md](docs/get_started.md#installation) for installat
 
 ## Get Started
 
+Install PyTorch. The code has been tested with CUDA 11.2/CuDNN 8.1.0, PyTorch 1.8.1.
+
+We train most of our models on 4x8-gpu nodes, 
+
+
+### Pre-training
+
+First, prepare pre-training datasets  [get_started.md](docs/get_started.md#installation)
+
+
+
+### Zero-shot Evalution
+First, prepare additional downstream classification datasets  [get_started.md](docs/get_started.md#installation)
+
+
+
 
 ## DeCLIP Model-Zoo
 
