@@ -88,9 +88,49 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
  </tbody></table>
  
 
+### Our pretrain declip model (w text encoder)
+
+<table><tbody>
+<!-- START TABLE -->
+<!-- TABLE HEADER -->
+<th valign="center">Method</th>
+<th valign="center">Dataset</th>
+<th valign="center">Model</th>
+<th valign="center">Epochs</th>
+<th valign="center">0-shot</th>
+<th valign="center">Config</th>
+<th valign="center">Paper</th>
+<th valign="center">Weights</th>
+
+<tr>
+<td align="center">DeCLIP</td>
+<td align="center">Declip-88M</td>
+<td align="center">ResNet50</td>
+<td align="center">32</td>
+<td align="center">62.5</td>
+<td align="center"><a href="">config</a></td>
+<td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1YS6xRdF5bY4rvgyCFQVIyPMr7evfZi3D/view?usp=sharing">GoogleDriver</a></td>
+</tr>
+
+ 
+<tr>
+<td align="center">DeCLIP</td>
+<td align="center">Declip-88M</td>
+<td align="center">ViT-B32</td>
+<td align="center">32</td>
+<td align="center">66.2</td>
+<td align="center"><a href="">config</a></td>
+<td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/135v0R8zTiAppr-BejtoXRHeGeMTlDf2x/view?usp=sharing">GoogleDriver</a></td>
+</tr>
+ 
+ 
+ </tbody></table>
 
 
-## CLIP-Benchmark
+
+# CLIP-Benchmark
 
 <!-- **Model will be relased soon** -->
 
