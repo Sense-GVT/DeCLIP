@@ -86,7 +86,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">62.5</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_r50_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1SZJ8CU5dDIwuvZWxb4xdld7qv7aw6wKm/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -98,7 +98,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">66.2</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_vit_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZukLk38c8LC6UUm/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -127,7 +127,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">62.5</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_r50_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1YS6xRdF5bY4rvgyCFQVIyPMr7evfZi3D/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -139,7 +139,7 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">66.2</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_vit_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="https://drive.google.com/file/d/135v0R8zTiAppr-BejtoXRHeGeMTlDf2x/view?usp=sharing">GoogleDriver</a></td>
 </tr>
@@ -179,7 +179,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">32.8</td>
-<td align="center"><a href="experiments/clip_experiments">config</a></td>
+<td align="center"><a href="experiments/clip_experiments/yfcc15m_vit_clip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2103.00020.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -189,7 +189,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">43.2</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_vit_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -199,7 +199,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">34.3</td>
-<td align="center"><a href="experiments/slip_experiments">config</a></td>
+<td align="center"><a href="experiments/slip_experiments/yfcc15m_vit_slip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2112.12750.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -209,7 +209,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">39.5</td>
-<td align="center"><a href="experiments/filip_experiments">config</a></td>
+<td align="center"><a href="experiments/filip_experiments/yfcc15m_vit_filip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2111.07783.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -219,7 +219,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ViT-B32</td>
 <td align="center">32</td>
 <td align="center">45.0</td>
-<td align="center"><a href="experiments/defilip_experiments">config</a></td>
+<td align="center"><a href="experiments/defilip_experiments/yfcc15m_vit_defilip">config</a></td>
 <td align="center"><a href="">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -248,7 +248,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">37.2</td>
-<td align="center"><a href="experiments/clip_experiments">config</a></td>
+<td align="center"><a href="experiments/clip_experiments/yfcc15m_r50_clip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2103.00020.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -258,7 +258,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">44.4</td>
-<td align="center"><a href="experiments/declip_experiments">config</a></td>
+<td align="center"><a href="experiments/declip_experiments/yfcc15m_r50_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -268,7 +268,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">28.5</td>
-<td align="center"><a href="experiments/slip_experiments">config</a></td>
+<td align="center"><a href="experiments/slip_experiments/yfcc15m_r50_slip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2112.12750.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>
@@ -278,7 +278,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">ResNet50</td>
 <td align="center">32</td>
 <td align="center">21.3</td>
-<td align="center"><a href="experiments/filip_experiments">config</a></td>
+<td align="center"><a href="experiments/filip_experiments/yfcc15m_r50_filip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2111.07783.pdf">paper</a></td>
 <td align="center"><a href="">url</a></td>
 </tr>

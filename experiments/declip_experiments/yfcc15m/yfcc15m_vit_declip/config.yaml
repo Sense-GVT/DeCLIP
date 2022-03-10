@@ -76,7 +76,7 @@ ema:
         decay: 0.999
 data:
     type: clip
-    read_from: petrel_bigmodel_mc
+    read_from: fs
 #read_from: fs
     use_dali: True
     batch_size: 128
@@ -104,7 +104,7 @@ data:
 
     test:
       - type: clip
-        read_from: mc
+        read_from: fs
         use_dali: True
         batch_size: 128
         num_workers: 4

@@ -1,22 +1,25 @@
-#protobuf:                                                                                        #
 model:
-    type: defilip_vitb32
+    type: declip_res50
     kwargs:
         image_encode:
-            embed_dim: 512
+            # layer_norm: True
+            bn_group_size: 32
+            # bn_group_size: 1
+            bn_sync_stats: True
+            # use_sync_bn: False
+            embed_dim: 1024
         text_encode:
             bpe_path: '../../../../text_info/bpe_simple_vocab_16e6.txt.gz'
             text_encode_type: Transformer #Transformer,Bert,GPT2
             text_model_utils:
                 random: False
                 freeze: False
-            embed_dim: 512
+            embed_dim: 1024
         clip:
             use_allgather: True
             text_mask_type: MLM
             return_nn_bank: True
-            feature_dim: 512
-            return_filip: True
+            # return_dense: True
 
 dist:
     sync: False
@@ -31,7 +34,6 @@ clip_simsiam_loss_weight:
     nn_text: 0.2
     simsiam_loss: 0.2
     masking_language: 0.2
-    filip: 0.2
 
 optimizer:
     type: AdamW
@@ -79,6 +81,7 @@ ema:
 data:
     type: clip
     read_from: fs
+#read_from: fs
     use_dali: True
     batch_size: 128
     num_workers: 7
@@ -98,7 +101,6 @@ data:
         sampler:
             type: distributed_iteration
         transforms:
-            # type: STANDARD_CLIP
             type: MOCOV2
         image_text_two_view: True
         fseek: True
@@ -129,7 +131,6 @@ data:
                     topk: [1, 5]
             #label_texts_ensemble: 'simple'
             label_texts_ensemble: 'prompt80'
-            #label_texts_ensemble: 'prompt1'
 
 saver:
     print_freq: 100

@@ -1,22 +1,28 @@
 #protobuf:                                                                                        #
 model:
-    type: defilip_vitb32
+    type: filip_res50
     kwargs:
         image_encode:
-            embed_dim: 512
+            bn_group_size: 16
+            bn_sync_stats: True
+            use_sync_bn: True
+            embed_dim: 1024
         text_encode:
             bpe_path: '../../../../text_info/bpe_simple_vocab_16e6.txt.gz'
             text_encode_type: Transformer #Transformer,Bert,GPT2
             text_model_utils:
                 random: False
                 freeze: False
-            embed_dim: 512
+            embed_dim: 1024
         clip:
+            mask_rate: 0.5
+            patch_number: 14
             use_allgather: True
             text_mask_type: MLM
-            return_nn_bank: True
-            feature_dim: 512
-            return_filip: True
+            return_nn_bank: False
+            return_dense: True
+            feature_dim: 768
+            select_topk: True
 
 dist:
     sync: False
@@ -27,23 +33,22 @@ grad_clip:
     max_value: 6
 
 clip_simsiam_loss_weight:
-    clip_loss: 0.4
-    nn_text: 0.2
-    simsiam_loss: 0.2
-    masking_language: 0.2
-    filip: 0.2
+    clip_loss: 0.0
+    mae_loss: 0.0
+    clip_dense_loss: 1.0
+    nn_text: 0.0
+    simsiam_loss: 0.0
+    masking_language: 0.0
 
 optimizer:
     type: AdamW
     kwargs:
         lr: 0.0001  # 5e-4
-        weight_decay: 0.1
+        weight_decay: 0.5
         betas: [0.9, 0.98]
         amsgrad: False
         eps: 0.00000001
     #fp16_normal_bn: True
-    fp16_normal_bn: True
-    fp16_normal_ln: True
     pconfig:
         bn_w:
             weight_decay: 0
@@ -64,7 +69,7 @@ lr_scheduler:
     type: Cosine
     kwargs:
         base_lr: 0.0001
-        warmup_lr: 0.001  # 3e-3
+        warmup_lr: 0.0005
         min_lr: 0.0
         warmup_steps: 2500
         max_iter: 128001
@@ -81,16 +86,19 @@ data:
     read_from: fs
     use_dali: True
     batch_size: 128
-    num_workers: 7
+    num_workers: 5
     pin_memory: True
     input_size: 224
     test_resize: 256
 
     train:
         root_dir: [
+#                    'cluster4:s3://GCC/AdamGCC',
                     'cluster2:s3://yfcc100m-part/data/',
                    ]
         meta_file: [
+                    # '/mnt/lustre/share_data/zhaolichen/dataset/gvm_gcc/gcc_train_v0.1.json',
+#                    '/mnt/cache/share_data/liyangguang/gcc_train_v0.1.json',
                    '../../../../imagenet_info/yfcc15m_clean_open_data.json',
                     ]
         image_reader:
@@ -98,11 +106,12 @@ data:
         sampler:
             type: distributed_iteration
         transforms:
-            # type: STANDARD_CLIP
             type: MOCOV2
         image_text_two_view: True
         fseek: True
         use_ranked: False
+        # use_ranked: True
+        # offset_file_prefix: /mnt/cache/share_data/liyangguang/data_offset
 
     test:
       - type: clip
@@ -115,6 +124,7 @@ data:
         test_resize: 256
         test:
             root_dir: '/mnt/lustre/share/images/val/'
+#             meta_file: '../../../../imagenet_info/val.json'
             meta_file: '../../../../imagenet_info/val_official.json'
             # you can change it to imagenet_info relative path, file already in gitlab
             image_reader:
@@ -127,22 +137,13 @@ data:
                 type: imagenet
                 kwargs:
                     topk: [1, 5]
-            #label_texts_ensemble: 'simple'
+            # label_texts_ensemble: 'simple'
             label_texts_ensemble: 'prompt80'
-            #label_texts_ensemble: 'prompt1'
 
 saver:
-    print_freq: 100
+    print_freq: 60
     val_freq: 2000
-    save_freq: 200
+    save_freq: 500
     save_many: False
     pretrain:
         auto_resume: True
-        # path: checkpoints/ckpt.pth.tar
-        #ignore:
-        #    key:
-        #        - optimizer
-        #        - last_iter
-    #         model:
-    #             - module.fc.weight
-    #             - module.fc.bias
