@@ -348,13 +348,12 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 
 ```
 
-@inproceedings{
- li2022supervision,
- title={Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image  Pre-training Paradigm},
- author={Yangguang Li and Feng Liang and Lichen Zhao and Yufeng Cui and Wanli Ouyang and Jing Shao and Fengwei Yu and Junjie Yan},
- booktitle={International Conference on Learning Representations},
- year={2022},
- url={https://openreview.net/forum?id=zq1iJkNk3uN}
+@inproceedings{li2022supervision,
+      title={Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image  Pre-training Paradigm},
+      author={Yangguang Li and Feng Liang and Lichen Zhao and Yufeng Cui and Wanli Ouyang and Jing Shao and Fengwei Yu and Junjie Yan},
+      booktitle={International Conference on Learning Representations},
+      year={2022},
+      url={https://openreview.net/forum?id=zq1iJkNk3uN}
 }
 
 @misc{cui2022democratizing,
