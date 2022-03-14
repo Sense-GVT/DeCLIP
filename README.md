@@ -154,6 +154,8 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 
 Witnessing its great success, researchers continue to push the frontier of CLIP.  For instance, SLIP, DeCLIP and FILIP achieve considerable improvements via embracing different kinds of supervision within the image-text pairs. However, it remains challenging to make fair comparison between these methods. This is because they do not choose consistent training recipes and even use different data. We propose CLIP-benchmark, a first attempt to evaluate, analyze, and benchmark CLIP and its variants. Moreover, we further combine DeCLIP with FILIP, bringing us the strongest variant DeFILIP.
 
+<p align="center"><img src="docs/main_figure2.png" alt="Declip framework" width="800"/></p>
+
 <!-- **Model will be relased soon** -->
 
 ### Supported Models:
