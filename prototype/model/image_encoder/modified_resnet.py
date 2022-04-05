@@ -122,9 +122,11 @@ class ModifiedResNet(nn.Module):
 
         rank = link.get_rank()
         world_size = link.get_world_size()
-        bn_group = simple_group_split(world_size, rank, world_size // bn_group_size)
+        bn_group = None
 
         def BNFunc(*args, **kwargs):
+            if bn_group is None:
+                bn_group = simple_group_split(world_size, rank, world_size // bn_group_size)
             return SyncBatchNorm2d(*args, **kwargs,
                                    group=bn_group,
                                    sync_stats=bn_sync_stats,
@@ -132,6 +134,8 @@ class ModifiedResNet(nn.Module):
 
 
         if use_sync_bn:
+            if bn_group is None:
+                bn_group = simple_group_split(world_size, rank, world_size // bn_group_size)
             BN = BNFunc
             print('[Rank {}] use SyncBatchNorm in bn_group {}'.format(rank, bn_group), flush=True)
         else:
