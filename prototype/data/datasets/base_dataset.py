@@ -8,7 +8,7 @@ try:
 except ImportError:
     pass
 # import ceph
-from petrel_client.client import Client
+# from petrel_client.client import Client
 
 
 class BaseDataset(Dataset):
@@ -64,6 +64,7 @@ class BaseDataset(Dataset):
 
     def _init_petrel(self, path=None):
         if not self.initialized:
+            from petrel_client.client import Client
             if path is None:
                 self.client = Client('/mnt/lustre/zhaolichen/codes/penghuan/clip_stage1/petreloss.conf')
             else:
