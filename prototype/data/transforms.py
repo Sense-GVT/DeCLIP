@@ -4,7 +4,7 @@ from PIL import ImageFilter
 import torch
 import torchvision.transforms as transforms
 import torchvision.transforms.functional as TF
-import springvision
+# import springvision
 from .clsa_augmentation import CLSAAug
 
 
@@ -175,19 +175,19 @@ torch_transforms_info_dict = {
     'compose': transforms.Compose
 }
 
-kestrel_transforms_info_dict = {
-    'resize': springvision.Resize,
-    'random_resized_crop': springvision.RandomResizedCrop,
-    'random_crop': springvision.RandomCrop,
-    'center_crop': springvision.CenterCrop,
-    'color_jitter': springvision.ColorJitter,
-    'normalize': springvision.Normalize,
-    'to_tensor': springvision.ToTensor,
-    'adjust_gamma': springvision.AdjustGamma,
-    'to_grayscale': springvision.ToGrayscale,
-    'compose': springvision.Compose,
-    'random_horizontal_flip': springvision.RandomHorizontalFlip
-}
+# kestrel_transforms_info_dict = {
+#     'resize': springvision.Resize,
+#     'random_resized_crop': springvision.RandomResizedCrop,
+#     'random_crop': springvision.RandomCrop,
+#     'center_crop': springvision.CenterCrop,
+#     'color_jitter': springvision.ColorJitter,
+#     'normalize': springvision.Normalize,
+#     'to_tensor': springvision.ToTensor,
+#     'adjust_gamma': springvision.AdjustGamma,
+#     'to_grayscale': springvision.ToGrayscale,
+#     'compose': springvision.Compose,
+#     'random_horizontal_flip': springvision.RandomHorizontalFlip
+# }
 
 
 def build_transformer(cfgs, image_reader={}):
@@ -195,11 +195,11 @@ def build_transformer(cfgs, image_reader={}):
     image_reader_type = image_reader.get('type', 'pil')
     if image_reader_type == 'pil':
         transforms_info_dict = torch_transforms_info_dict
-    else:
-        transforms_info_dict = kestrel_transforms_info_dict
-        if image_reader.get('use_gpu', False):
-            springvision.KestrelDevice.bind('cuda',
-                                            torch.cuda.current_device())
+    # else:
+    #     transforms_info_dict = kestrel_transforms_info_dict
+    #     if image_reader.get('use_gpu', False):
+    #         springvision.KestrelDevice.bind('cuda',
+    #                                         torch.cuda.current_device())
 
     for cfg in cfgs:
         transform_type = transforms_info_dict[cfg['type']]
