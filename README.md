@@ -6,16 +6,16 @@ Our paper is available on [arxiv](https://arxiv.org/abs/2110.05208) -->
 
 # [Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm.](https://arxiv.org/abs/2110.05208)
 
-**DeCLIP**: *Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm*. the paper is available on [Arxiv](https://arxiv.org/abs/2110.05208).
-
-**CLIP-Benchmark**: *Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision*. the paper is available on [Arxiv](https://arxiv.org/abs/2203.05796).
-
 DeCLIP is an open-source project that welcomes any contribution and feedback. We wish that the toolbox and benchmark could serve the growing research community by providing a flexible as well as a standardized toolkit to reimplement existing methods and develop their own new Contrastive Language-Image Pretraining methods. You can find the following things in this repo:
 + Pre-trained models and training codes to reproduce various Contrastive Language-Image Pretraining methods(e.g. CLIP, DeCLIP, SLIP, FILIP).
 + Various benchmark datasets for Large-scale Contrastive Language-Image Pretraining task.
 + Zero-shot transfer and linear classification evaluation scripts for downstream datasets.
 
-We aims to democratize large-scale CLIP to build a fair and reproducible CLIP community.
+We aims to democratize large-scale CLIP to build a fair and reproducible CLIP community. Our paper are available on:
+
+**DeCLIP**: [Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm](https://arxiv.org/abs/2110.05208).
+
+**CLIP-Benchmark**: [Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision](https://arxiv.org/abs/2203.05796).
 
 ## Introduction
 
