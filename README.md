@@ -6,7 +6,9 @@ Our paper is available on [arxiv](https://arxiv.org/abs/2110.05208) -->
 
 # [Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm.](https://arxiv.org/abs/2110.05208)
 
-DeCLIP: Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm. Our paper is available on [Arxiv](https://arxiv.org/abs/2110.05208).
+**DeCLIP**: *Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm*. the paper is available on [Arxiv](https://arxiv.org/abs/2110.05208).
+
+**CLIP-Benchmark**: *Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision*. the paper is available on [Arxiv](https://arxiv.org/abs/2203.05796).
 
 DeCLIP is an open-source project that welcomes any contribution and feedback. We wish that the toolbox and benchmark could serve the growing research community by providing a flexible as well as a standardized toolkit to reimplement existing methods and develop their own new Contrastive Language-Image Pretraining methods. You can find the following things in this repo:
 + Pre-trained models and training codes to reproduce various Contrastive Language-Image Pretraining methods(e.g. CLIP, DeCLIP, SLIP, FILIP).
@@ -150,6 +152,10 @@ DeCLIP_vitb32 [GoogleDriver](https://drive.google.com/file/d/1W2cCxsr3EjvOOWzVXZ
 
 
 # CLIP-Benchmark
+
+
+Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision. Our paper is available on [Arxiv](https://arxiv.org/abs/2203.05796).
+
 
 
 Witnessing its great success, researchers continue to push the frontier of CLIP.  For instance, SLIP, DeCLIP and FILIP achieve considerable improvements via embracing different kinds of supervision within the image-text pairs. However, it remains challenging to make fair comparison between these methods. This is because they do not choose consistent training recipes and even use different data. We propose CLIP-benchmark, a first attempt to evaluate, analyze, and benchmark CLIP and its variants. Moreover, we further combine DeCLIP with FILIP, bringing us the strongest variant DeFILIP.
