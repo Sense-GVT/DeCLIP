@@ -240,8 +240,8 @@ class DEFILIP(CLIP):
             dense_id_2 = dense_id_2 + (torch.arange(bs) * n2).to(dense_id_2.device)[:, None]
             selected_feat_2 = dense_feat_2.reshape(bs * n2, -1)[dense_id_2].reshape(bs, top_k, -1)
 
-        selected_feat_1 = dense_feat_1
-        selected_feat_2 = dense_feat_2
+#         selected_feat_1 = dense_feat_1
+#         selected_feat_2 = dense_feat_2
 
         selected_feat_1 = self.all_gather(selected_feat_1)
         selected_feat_2 = self.all_gather(selected_feat_2)
