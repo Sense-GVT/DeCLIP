@@ -1,0 +1,240 @@
+#protobuf:                                                                                        #
+model:
+    type: declip_res50
+    kwargs:
+        image_encode:
+            # layer_norm: True
+            bn_group_size: 16
+            bn_sync_stats: True
+            use_sync_bn: False
+            embed_dim: 1024
+        text_encode:
+            bpe_path: '../../../../text_info/bpe_simple_vocab_16e6.txt.gz'
+            text_encode_type: Transformer #Transformer,Bert,GPT2,Bert_gvx
+            text_model_utils:
+                random: False
+                freeze: False
+            embed_dim: 1024
+        clip:
+            use_allgather: True
+            text_mask_type: MLM
+            return_nn_bank: True
+            EDA: True
+            feature_dim: 1024
+
+dist:
+    sync: False
+
+grad_clip:
+    type: logit_scale_param_abs_min
+    value: 3
+
+clip_simsiam_loss_weight:
+    clip_loss: 0.4
+    nn_text: 0.2
+    simsiam_loss: 0.2
+    masking_language: 0.2
+
+optimizer:
+    type: FusedFP16SGD
+    kwargs:
+        nesterov: True
+        momentum: 0.9
+        weight_decay: 0.0001
+    #fp16_normal_bn: True
+    pconfig:
+        logit_scale:
+            lr: 0.0001
+
+
+lr_scheduler:
+    type: Cosine
+    kwargs:
+        base_lr: 0.001
+        warmup_lr: 0.2
+        min_lr: 0.0
+        warmup_steps: 2500
+        max_iter: 46001  # for testing
+
+
+
+label_smooth: 0.0
+ema:
+    enable: False
+    kwargs:
+        decay: 0.999
+data:
+    type: clip
+    read_from: petrel
+    use_dali: True
+    batch_size: 128
+    num_workers: 5
+    pin_memory: True
+    input_size: 224
+    test_resize: 256
+
+    train:
+        root_dir: [
+                    'cluster2:s3://yfcc100m-part/data/',
+                   ]
+        meta_file: [
+                   '../../../../imagenet_info/yfcc15m_clean_open_data.json',
+                    ]
+        image_reader:
+            type: pil
+        sampler:
+            type: distributed_iteration
+        transforms:
+            type: MOCOV2
+        image_text_two_view: True
+        fseek: False
+        use_ranked: False
+
+    test:
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            root_dir: '/mnt/lustre/share/images/val/'
+            meta_file: '../../../../imagenet_info/val_official.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet-A/imagenet-a'
+            meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet-A/dataset_prototype_format.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet-R/imagenet-r'
+            meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet-R/dataset_prototype_format.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet_Sketch/sketch'
+            meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNet_Sketch/dataset_prototype_format.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNetV2/imagenetv2-top-images-format-val'
+            meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNetV2/imagenetv2-top-images-format-val_dataset.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+      - type: clip
+        read_from: mc
+        use_dali: True
+        batch_size: 32
+        num_workers: 4
+        pin_memory: False
+        test:
+            # root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNetV2/imagenetv2-top-images-format-val'
+            root_dir: '/mnt/lustre/share_data/zhaolichen/dataset/objectnet/objectnet-1.0/images'
+            # meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/imagenet/ImageNetV2/imagenetv2-top-images-format-val_dataset.json'
+            meta_file: '/mnt/lustre/share_data/zhaolichen/dataset/objectnet/dataset_prototype_format.json'
+            # you can change it to imagenet_info relative path, file already in gitlab
+            image_reader:
+                type: pil
+            sampler:
+                type: distributed
+            transforms:
+                type: ONECROP
+            evaluator:
+                type: imagenet
+                kwargs:
+                    topk: [1, 5]
+            #label_texts_ensemble: 'simple'
+            label_texts_ensemble: 'prompt80'
+
+saver:
+    print_freq: 100
+    val_freq: 2000
+    save_freq: 500
+    save_many: False
+    pretrain:
+        auto_resume: False
+        path: /mnt/lustre/share_data/zhaolichen/to_cyf/model/r50.pth.tar
+        ignore:
+            key:
+                # - optimizer
+                - last_iter
