@@ -30,7 +30,9 @@ Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet 
 
 # Updates
 
-***2022-03-10*** We update the result of CLIP-Benchmark and release our YFCC15M dataset
+***2022-06-25*** We release the checkpoints of each models for benchmark.
+
+***2022-03-10*** We update the result of CLIP-Benchmark and release our YFCC15M dataset.
 
 ***2022-02-22*** We release our training code, benchmark, and model zoo! ***We will release the checkpoints of each models after align the results soon***. We hope this project could serve the growing Contrastive Language-Image Pretraining research community by providing a flexible as well as standardized toolkit.
 
@@ -58,8 +60,6 @@ You can run `run.sh` directly to train the corresponding model. We train most of
 #### 2. Zero-shot Evalution
 
 You can add a argument `--evaluate` on run script for zero-shot evalution.
-
-
 
 
 ## DeCLIP Model-Zoo
@@ -189,7 +189,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">32.8</td>
 <td align="center"><a href="experiments/clip_experiments/yfcc15m_vit_clip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2103.00020.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1Xr6fP6DlVzh4SMXXhtcOlh6hFWPaUgs2/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 <tr>
 <td align="center">DeCLIP</td>
@@ -199,7 +199,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">43.2</td>
 <td align="center"><a href="experiments/declip_experiments/yfcc15m_vit_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1YOAjiSgOBV4gjPpMyo8UDRSZMFxkP3Dz/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 <tr>
 <td align="center">SLIP</td>
@@ -209,7 +209,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">34.3</td>
 <td align="center"><a href="experiments/slip_experiments/yfcc15m_vit_slip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2112.12750.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1PhjUgjLHymTW42_6TaY21P685-lSjbTj/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 <tr>
 <td align="center">FILIP</td>
@@ -219,7 +219,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">39.5</td>
 <td align="center"><a href="experiments/filip_experiments/yfcc15m_vit_filip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2111.07783.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1qqsCMgOqOaQkmgkG205qoKxcOsr3QacO/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 
 <td align="center">DeFILIP</td>
@@ -228,8 +228,8 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">32</td>
 <td align="center">45.0</td>
 <td align="center"><a href="experiments/defilip_experiments/yfcc15m_vit_defilip">config</a></td>
-<td align="center"><a href="">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://arxiv.org/abs/2203.05796">paper</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1FYId-kfhwneDGZO6R8nxAS7ti4_V4xwG/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 
 </tbody></table>
@@ -258,7 +258,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">37.2</td>
 <td align="center"><a href="experiments/clip_experiments/yfcc15m_r50_clip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2103.00020.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1ln2doFyO3Jhld1GJUedHozvA6cdoE6jp/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 <tr>
 <td align="center">DeCLIP</td>
@@ -268,7 +268,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">44.4</td>
 <td align="center"><a href="experiments/declip_experiments/yfcc15m_r50_declip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2110.05208.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center"><a href="https://drive.google.com/file/d/1ZjgJkA-50p0U16kJS-oEKHRUWD2nAjJb/view?usp=sharing">GoogleDriver</a></td>
 </tr>
 <tr>
 <td align="center">SLIP</td>
@@ -278,7 +278,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">28.5</td>
 <td align="center"><a href="experiments/slip_experiments/yfcc15m_r50_slip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2112.12750.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center">--</td>
 </tr>
 <tr>
 <td align="center">FILIP</td>
@@ -288,7 +288,7 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 <td align="center">21.3</td>
 <td align="center"><a href="experiments/filip_experiments/yfcc15m_r50_filip">config</a></td>
 <td align="center"><a href="https://arxiv.org/pdf/2111.07783.pdf">paper</a></td>
-<td align="center"><a href="">url</a></td>
+<td align="center">--</td>
 </tr>
 
 <!-- <td align="center">DeFILIP</td>
@@ -355,7 +355,6 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
 } -->
 
 ```
-
 @inproceedings{li2022supervision,
       title={Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image  Pre-training Paradigm},
       author={Yangguang Li and Feng Liang and Lichen Zhao and Yufeng Cui and Wanli Ouyang and Jing Shao and Fengwei Yu and Junjie Yan},
@@ -372,7 +371,6 @@ The following models are pre-trained on YFCC15M and evaluated on ImageNet-1K (IL
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
-
 ```
 
 ## License
