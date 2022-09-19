@@ -17,6 +17,20 @@ We aims to democratize large-scale CLIP to build a fair and reproducible CLIP co
 
 **CLIP-Benchmark**: [Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision](https://arxiv.org/abs/2203.05796).
 
+
+## Call for Papers & Participation
+
+:loudspeaker: **Call for Papers & Participation**: ECCV Workshop and Challenge on [Computer Vision in the Wild (CVinW)](https://computer-vision-in-the-wild.github.io/eccv-2022/)
+
+
+<table>
+  <tr>
+    <td style="width:220px">  <center><a href="https://computer-vision-in-the-wild.github.io/eccv-2022/"><img src="https://computer-vision-in-the-wild.github.io/eccv-2022/static/eccv2022/img/ECCV-logo3.png" alt="CVinW"  width="100" height="52">   [Workshop]</a>  </center> </td>
+    <td style="width:220px"> <center><a href="https://eval.ai/web/challenges/challenge-page/1832/overview"><img src="https://evalai.s3.amazonaws.com/media/logos/4e939412-a9c0-46bd-9797-5ba0bd0a9095.jpg" alt="ICinW"  width="100" height="52"> [IC Challenge]</a>   </center> </td>
+    <td style="width:220px">  <center><a href="https://eval.ai/web/challenges/challenge-page/1839/overview"><img src="https://evalai.s3.amazonaws.com/media/logos/e3727105-2b29-4c9b-98a6-3d1191884eb5.jpg" alt="ODinW"  width="100" height="52"> [OD Challenge]</a>  </center> </td>
+  </tr>
+</table>
+
 ## Introduction
 
 Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet al., 2021) has attracted unprecedented attention for its impressive zero-shot recognition ability and excellent transferability to downstream tasks. However, CLIP is quite data-hungry and requires 400M image-text pairs for pre-training, thereby restricting its adoption. This work proposes a novel training paradigm, Data efficient CLIP (DeCLIP), to alleviate this limitation. We demonstrate that by carefully utilizing the widespread supervision among the image-text pairs, our DeCLIP can learn generic visual features more efficiently. Instead of using the single image-text contrastive supervision, we fully exploit data potential through the use of (1) self-supervision within each modality; (2) multi-view supervision across modalities; (3) nearest-neighbor supervision from other similar pairs. Benefiting from these intrinsic supervision, our DeCLIP-ResNet50 can achieve 60.4% zero-shot top1 accuracy on ImageNet, which is 0.8% above the CLIP-ResNet50 while using 7.1× fewer data. Our DeCLIP-ResNet50 outperforms its counterpart in 8 out of 11 visual datasets when transferred to downstream tasks. Moreover, Scaling up the model and computing also works well in our framework.
@@ -27,8 +41,9 @@ Recently, large-scale Contrastive Language-Image Pre-training (CLIP) (Radfordet 
 <!-- ![main_figure](docs/main_figure.jpg) -->
 
 
-
 # Updates
+
+***2022-09-19*** :loudspeaker: **Call for Papers & Participation**: ECCV Workshop and Challenge on [Computer Vision in the Wild (CVinW)](https://computer-vision-in-the-wild.github.io/eccv-2022/)
 
 ***2022-06-25*** We release the checkpoints of each models for benchmark.
 
